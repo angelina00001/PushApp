@@ -2,7 +2,7 @@
 
 A React Native (Expo) mobile application for Android that handles push notifications and device registration.
 
-**APK:** https://drive.google.com/file/d/1korj_nriEAgKKwmNzn77RRYgEcDq1g5I/view?usp=sharing
+**.APK для установки на устройство:** https://drive.google.com/file/d/1korj_nriEAgKKwmNzn77RRYgEcDq1g5I/view?usp=sharing
 
 ## Features
 
