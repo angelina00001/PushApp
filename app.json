@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "Push Notify App",
-    "slug": "push-notify-app",
+    "slug": "pushhhh",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
@@ -45,8 +45,9 @@
     "extra": {
       "router": {},
       "eas": {
-        "projectId": "142816fa-ec6f-411d-9558-d82e800302d6"
+        "projectId": "4b56ba88-1ba9-40db-aee1-82043b142140"
       }
-    }
+    },
+    "owner": "russsss-team"
   }
 }
