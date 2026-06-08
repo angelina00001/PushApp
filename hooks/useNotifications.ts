@@ -20,16 +20,32 @@ export function useNotifications() {
     if (Platform.OS !== 'web') {
       registerForPushNotificationsAsync();
     } else {
-      // On web, just show placeholder
-      setPushToken('Web platform - use mobile device for push notifications');
-      setPermissionStatus('undetermined');
-    }
+      setPermissionStatus(Notification.permission === 'granted' ? 'granted' : 'undetermined');
+      if (Notification.permission === 'granted') {
+        const token = localStorage.getItem('web_push_token');
+        if (token) setPushToken(token);
+      }
   }, []);
 
   async function registerForPushNotificationsAsync() {
-    if (Platform.OS === 'web') {
-      return;
-    }
+      if (Platform.OS === 'web') {
+        if (!('Notification' in window)) {
+          setPushToken('');
+          setPermissionStatus('denied');
+          return;
+        }
+        const result = await Notification.requestPermission();
+        setPermissionStatus(result as any);
+        if (result === 'granted') {
+          let token = localStorage.getItem('web_push_token');
+          if (!token) {
+            token = `web_${crypto.randomUUID()}_${Date.now()}`;
+            localStorage.setItem('web_push_token', token);
+          }
+          setPushToken(token);
+        }
+        return;
+      }
 
     // Dynamically import expo-notifications only on native platforms
     const Notifications = await import('expo-notifications');
